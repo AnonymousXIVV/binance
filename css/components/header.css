@@ -1,0 +1,72 @@
+/* Header Component Styles */
+.header {
+    background-color: var(--card-background);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/* Profile Dropdown Styles */
+.profile-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    width: 240px;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 20px var(--card-shadow-color);
+    z-index: 50;
+    padding: 0.5rem;
+    display: none; /* Hidden by default */
+}
+
+.profile-dropdown.open {
+    display: block;
+}
+
+.profile-dropdown .dropdown-header {
+    padding: 0.5rem 0.75rem;
+}
+
+.profile-dropdown .dropdown-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 0.5rem 0;
+}
+
+.profile-dropdown .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.profile-dropdown .dropdown-item:hover {
+    background-color: var(--background-light);
+    color: var(--text-primary);
+}
+
+.profile-dropdown .dropdown-item svg {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Responsive Header Styles */
+@media (max-width: 768px) {
+    .header .md\:hidden {
+        display: flex !important; /* Show mobile toggle */
+    }
+    .header .hidden.sm\:flex {
+        display: none !important; /* Hide live market on small screens */
+    }
+}

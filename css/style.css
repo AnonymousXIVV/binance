@@ -1,0 +1,500 @@
+/* Binance Dark Theme Palette */
+:root {
+    --background-dark: #222222; /* Overall page background - slightly greyer */
+    --background-light: #1C1F24; /* Used for inner sections like individual crypto rows */
+    --card-background: #1F2226; /* Main dashboard cards background - now a lighter grey for contrast */
+    --border-color: #2F343A; /* More subtle border color for general cards */
+    --text-primary: #E0E6EB; /* Slightly softer off-white for main text */
+    --text-secondary: #7A828C; /* Muted grey for secondary text */
+    --accent-yellow: #F0B90B;
+    --accent-green: #0ECB81; /* Binance Green for success */
+    --accent-red: #F6465D; /* Binance Red for warnings/errors */
+    --button-gradient-start: #F0B90B;
+    --button-gradient-end: #D4A700;
+    --card-shadow-color: rgba(0, 0, 0, 0.4);
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+
+    /* Specific status colors */
+    --status-green: var(--accent-green);
+    --status-red: var(--accent-red);
+    --status-pending: #FFC107;
+
+    /* Chart specific colors (Binance theme) */
+    --chart-fiat-color: var(--text-secondary);
+    --chart-crypto-color: var(--accent-green);
+
+    /* New variables from provided artifact's :root */
+    --background: var(--background-dark);
+    --muted: var(--background-light);
+    --foreground: var(--text-primary);
+    --muted-foreground: var(--text-secondary);
+    --sidebar: var(--card-background);
+    --sidebar-border: var(--border-color);
+    --sidebar-foreground: var(--text-primary);
+    --sidebar-accent: var(--accent-yellow);
+    --sidebar-accent-background: rgba(240, 185, 11, 0.2);
+    --card-foreground: var(--text-primary);
+    --primary-button-bg-start: var(--button-gradient-start);
+    --primary-button-bg-end: var(--button-gradient-end);
+    --primary-button-text: var(--background-dark);
+    --yellow-accent: #F0B90B;
+    --green-text: #0ECB81;
+    --red-text: #F6465D;
+    --binance-primary: 45 100% 60%;
+    --binance-primary-foreground: 220 10% 8%;
+    --binance-ring: 45 100% 60%;
+
+    /* Custom variables for cyber/modal colors - now yellow/orange themed */
+    --binance-orange-light: #F8D12F;
+    --binance-orange-dark: #E6B31E;
+
+    /* RGB values for transparent backgrounds */
+    --binance-orange-light-rgb: 248, 209, 47;
+    --accent-green-rgb: 14, 203, 129;
+}
+
+/* Applying dark theme variables */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-dark);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -moz-tab-size: 4;
+    tab-size: 4;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Universal box-sizing and border reset */
+*, :after, :before {
+    box-sizing: border-box;
+    border: 0 solid transparent;
+}
+
+/* Main element styles */
+main {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+/* Main Content Area */
+.main-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    background-color: var(--background-dark); /* bg-[var(--background-dark)] */
+}
+
+.page-content {
+    padding: 1.5rem; /* p-6 */
+    padding-bottom: 5rem; /* pb-20 */
+    min-height: calc(100vh - 64px); /* Adjust for header height */
+    background: linear-gradient(to bottom right, var(--background-dark), var(--background-light));
+}
+
+/* Custom styles for cards and buttons (Binance-themed) */
+.dashboard-card {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl); /* Slightly larger radius */
+    box-shadow: 0 10px 20px var(--card-shadow-color); /* More pronounced shadow */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.dashboard-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.cyber-card {
+    border-radius: 0.5rem;
+    border: 1px solid var(--sidebar-border);
+    background-color: var(--card-background);
+    color: var(--card-foreground);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-button {
+    background: linear-gradient(to right, var(--button-gradient-start), var(--button-gradient-end));
+    color: var(--background-dark); /* Dark text on yellow */
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 12px rgba(240, 185, 11, 0.4); /* Stronger yellow glow */
+    border: none; /* Remove default border */
+}
+.primary-button:hover {
+    background: linear-gradient(to right, var(--button-gradient-end), var(--button-gradient-start)); /* Reverse gradient on hover */
+    box-shadow: 0 6px 18px rgba(240, 185, 11, 0.6);
+    transform: translateY(-1px);
+}
+
+.secondary-button {
+    background-color: var(--background-light);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease-in-out;
+    border-radius: var(--radius-md);
+}
+.secondary-button:hover {
+    background-color: var(--border-color); /* Darker on hover */
+    border-color: var(--accent-yellow); /* Yellow border on hover */
+    color: var(--accent-yellow); /* Yellow text on hover */
+    transform: translateY(-1px);
+}
+
+.text-accent-binance {
+    color: var(--accent-yellow);
+}
+
+.text-muted-binance {
+    color: var(--text-secondary);
+}
+
+/* Status badges (Binance-themed colors) */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px; /* rounded-full */
+    font-size: 0.75rem; /* text-xs */
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.status-badge.completed {
+    background-color: rgba(14, 203, 129, 0.2); /* var(--accent-green) with opacity */
+    color: var(--accent-green);
+}
+.status-badge.pending {
+    background-color: rgba(255, 193, 7, 0.2); /* Yellow for pending */
+    color: var(--status-pending);
+}
+.status-badge.requested {
+    background-color: rgba(240, 185, 11, 0.2); /* Binance Yellow with opacity */
+    color: var(--accent-yellow);
+}
+.status-badge.active {
+    background-color: rgba(14, 203, 129, 0.2);
+    color: var(--accent-green);
+}
+.status-badge.failed {
+    background-color: rgba(246, 70, 93, 0.2); /* Binance Red with opacity */
+    color: var(--accent-red);
+}
+
+/* Ensure text colors are applied with !important to override defaults */
+.text-accent-green {
+    color: var(--accent-green) !important;
+}
+.text-accent-red {
+    color: var(--accent-red) !important;
+}
+.text-muted-binance {
+    color: var(--text-secondary) !important;
+}
+
+/* Crypto icon styling */
+.crypto-icon-container {
+    width: 28px; /* Slightly larger size for icons */
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.crypto-icon-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensure the image fits within the container */
+}
+
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--card-background);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    position: relative;
+}
+
+.modal-content .card-header {
+    margin-bottom: 1rem;
+}
+
+.modal-content .title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.modal-content .icon-button {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+.modal-content .icon-button:hover {
+    color: var(--text-primary);
+}
+
+.modal-content label {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    background-color: var(--background-light);
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.modal-content input::placeholder,
+.modal-content textarea::placeholder {
+    color: var(--text-secondary);
+}
+
+.modal-content .security-notice {
+    background-color: rgba(246, 70, 93, 0.1);
+    border: 1px solid var(--accent-red);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    color: var(--accent-red);
+    font-size: 0.875rem;
+}
+
+.modal-content .security-notice .title-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* Multi-step form specific styles */
+.modal-content .progress-bar-track {
+    background-color: var(--border-color);
+}
+.modal-content .progress-bar-fill {
+    background: linear-gradient(to right, var(--binance-orange-light, var(--accent-yellow)), var(--binance-orange-dark, var(--accent-yellow)));
+}
+
+.modal-content .step-icon-active {
+    border-color: var(--accent-yellow);
+    background-color: rgba(240, 185, 11, 0.2);
+    color: var(--accent-yellow);
+}
+.modal-content .step-icon-completed {
+    border-color: var(--accent-green);
+    background-color: rgba(14, 203, 129, 0.2);
+    color: var(--accent-green);
+}
+.modal-content .step-icon-inactive {
+    border-color: var(--border-color);
+    background-color: var(--background-light);
+    color: var(--text-secondary);
+}
+/* Request Card Modal Steps */
+.step-icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.step-icon {
+    width: 3rem; /* 48px */
+    height: 3rem; /* 48px */
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-width: 2px;
+    transition: all 0.3s ease;
+}
+.step-icon svg {
+    width: 1.5rem; /* 24px */
+    height: 1.5rem; /* 24px */
+}
+.step-label {
+    font-size: 0.75rem; /* 12px */
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+/* --- Live Chat Widget --- */
+.chat-widget {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 350px;
+    max-width: 90vw;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    z-index: 1001;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+.chat-widget.hidden {
+    transform: translateY(20px);
+    opacity: 0;
+    pointer-events: none;
+}
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: var(--background-light);
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 600;
+    cursor: grab;
+}
+.chat-messages {
+    flex-grow: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.chat-message {
+    max-width: 80%;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-md);
+    line-height: 1.4;
+}
+.chat-message.user {
+    background-color: var(--accent-yellow);
+    color: var(--background-dark);
+    align-self: flex-end;
+    border-bottom-right-radius: 0.25rem;
+}
+.chat-message.agent {
+    background-color: var(--background-light);
+    color: var(--text-primary);
+    align-self: flex-start;
+    border-bottom-left-radius: 0.25rem;
+}
+.chat-message.agent.typing {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+.chat-message.agent.typing span {
+    width: 8px;
+    height: 8px;
+    background-color: var(--text-secondary);
+    border-radius: 50%;
+    animation: typing-bounce 1s infinite;
+}
+.chat-message.agent.typing span:nth-child(2) { animation-delay: 0.2s; }
+.chat-message.agent.typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typing-bounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-4px); }
+}
+.chat-form {
+    display: flex;
+    padding: 0.75rem;
+    border-top: 1px solid var(--border-color);
+}
+.chat-form input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    outline: none;
+    padding: 0 0.5rem;
+}
+.chat-form .icon-button {
+    color: var(--accent-yellow);
+}
+
+/* --- Light Mode Theme --- */
+body.light-mode {
+    --background-dark: #F5F5F5;
+    --background-light: #FFFFFF;
+    --card-background: #FFFFFF;
+    --border-color: #EAECEF;
+    --text-primary: #181A20;
+    --text-secondary: #707A8A;
+    --card-shadow-color: rgba(0, 0, 0, 0.05);
+    --sidebar: #FFFFFF;
+    --sidebar-border: #EAECEF;
+    --sidebar-foreground: #181A20;
+    --sidebar-accent-background: rgba(240, 185, 11, 0.15);
+    --primary-button-text: #181A20;
+}
+
+body.light-mode .secondary-button {
+    background-color: #F5F5F5;
+    color: var(--text-primary);
+}
+
+body.light-mode .slider {
+    background-color: #EAECEF;
+    border-color: #DCDFE4;
+}
+
+/* --- Responsive Modal Adjustments --- */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 1rem; /* Reduce padding on mobile */
+        max-height: 90vh; /* Prevent modal from being too tall */
+        overflow-y: auto; /* Allow scrolling within the modal */
+    }
+    #request-card-modal .step-icon {
+        width: 2.5rem; /* 40px */
+        height: 2.5rem; /* 40px */
+    }
+    #request-card-modal .step-icon svg {
+        width: 1.25rem; /* 20px */
+        height: 1.25rem; /* 20px */
+    }
+    #request-card-modal .step-label {
+        font-size: 0.625rem; /* 10px */
+        line-height: 1.2;
+        max-width: 50px;
+        margin-top: 0.25rem;
+    }
+}
